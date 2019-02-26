@@ -1,0 +1,21 @@
+/*自定义全局css，公用css*/
+
+.body{
+    margin: 0;
+}
+.clear{
+    clear: both;
+}
+.hide{
+    display: none;
+}
+
+
+
+.font-28{
+    font-size: 28px;
+}
+
+
+
+
