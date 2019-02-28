@@ -180,7 +180,7 @@ body{
     height: 56px;
     text-align: center;
     line-height: 56px;
-    background: #0d4a52;
+    background: #333333;
     letter-spacing: 3px;
 }
 
@@ -248,7 +248,7 @@ body{
     margin-left: auto;
 }
 .player-bg{
-    /*background: #0d4a52 !important;*/
+    background: #333333 !important;
 }
 
 .rotate{
