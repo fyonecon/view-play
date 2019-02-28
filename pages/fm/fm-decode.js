@@ -5,7 +5,7 @@
 
 
 const title = "红杏出墙FM";
-const bug = false;
+const bug = true;
 function console_log(txt) { bug === true?console.info(txt):""}
 let db_num = 0;
 let timer;
@@ -196,7 +196,7 @@ function hide_player_page() {
 
     setTimeout(function () {
         document.getElementsByClassName("kd-player-page")[0].classList.add("hide");
-    }, 800);
+    }, 200);
 }
 
 /*
