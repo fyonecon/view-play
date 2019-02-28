@@ -190,11 +190,13 @@ function db_player(src) {
 * */
 function hide_player_page() {
     console_log("点击了-折叠-关闭折叠页");
-    document.getElementsByClassName("kd-player-page")[0].classList.add("hide");
-    // animated
     document.getElementsByClassName("kd-player-page")[0].classList.add("animated");
     document.getElementsByClassName("kd-player-page")[0].classList.remove("fadeInUpBig");
     document.getElementsByClassName("kd-player-page")[0].classList.add("fadeOutDown");
+
+    setTimeout(function () {
+        document.getElementsByClassName("kd-player-page")[0].classList.add("hide");
+    }, 800);
 }
 
 /*
@@ -203,10 +205,11 @@ function hide_player_page() {
 function this_page(num) {
     console_log("打开-播放页-"+num);
     console_log(live_list[num]["stream"]);
-    document.getElementsByClassName("kd-player-page")[0].classList.remove("hide");
     document.getElementsByClassName("kd-player-page")[0].classList.add("animated");
     document.getElementsByClassName("kd-player-page")[0].classList.remove("fadeOutDown");
     document.getElementsByClassName("kd-player-page")[0].classList.add("fadeInUpBig");
+
+    document.getElementsByClassName("kd-player-page")[0].classList.remove("hide");
 }
 
 /*
