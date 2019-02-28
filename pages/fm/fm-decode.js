@@ -16,7 +16,7 @@ function time() {
 }
 let title_tag = document.getElementsByTagName("title")[0];
 
-let the_file = "http://cdnaliyun.oss-cn-hangzhou.aliyuncs.com/";
+let the_file = "public/img/";
 
 let null_fm_cover = the_file+"fm/fm_null_cover.png";
 
@@ -77,6 +77,20 @@ const live_list = [
         "cover": the_file+"fm/voaenglish.jpg",
         "stream": "http://voa-28.ng.akacast.akamaistream.net/7/54/322040/v1/ibb.akacast.akamaistream.net/voa-28",
     },
+    {
+        "language": "Zh-cn | 新闻",
+        "class": "china",
+        "name": "中国之声",
+        "cover": the_file+"fm/zgzs.jpg",
+        "stream": "http://lhttp.qingting.fm/live/386/64k.mp3?app_id=web",
+    },
+    /*{
+        "language": "zh-cn | Music Singapore",
+        "class": "singapore",
+        "name": "933 YES (Singapore)",
+        "cover": the_file+"fm/933yes.png",
+        "stream": "http://19443.live.streamtheworld.com/YES933_SC?dist=radiosingapore",
+    },*/
 ];
 
 
