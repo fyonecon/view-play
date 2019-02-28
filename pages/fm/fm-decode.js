@@ -5,7 +5,7 @@
 
 
 const title = "红杏出墙FM";
-const bug = true;
+const bug = false;
 function console_log(txt) { bug === true?console.info(txt):""}
 let db_num = 0;
 let timer;
