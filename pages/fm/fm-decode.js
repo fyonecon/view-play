@@ -235,8 +235,12 @@ function this_item(num, open) {
 
     if(open === 1){
         setTimeout(function () { // 展示折叠
+            document.getElementsByClassName("kd-player-page")[0].classList.add("animated");
+            document.getElementsByClassName("kd-player-page")[0].classList.remove("fadeOutDown");
+            document.getElementsByClassName("kd-player-page")[0].classList.add("fadeInUpBig");
+
             document.getElementsByClassName("kd-player-page")[0].classList.remove("hide");
-        }, 500);
+        }, 200);
     }
 
     // 更新时间指示
