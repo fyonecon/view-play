@@ -6,7 +6,7 @@
 
 body{
     margin: 0;
-    background: #454545;
+    background: #555555;
 }
 
 .kd-player-page{
@@ -193,8 +193,8 @@ body{
 }
 .kd-item-cell{
     height: 60px;
-    background: #333333;
-    border-bottom: 1px solid #555555;
+    background: #444444;
+    border-bottom: 1px solid #666666;
 }
 .kd-item-cover{
     height: 44px;
@@ -248,7 +248,7 @@ body{
     margin-left: auto;
 }
 .player-bg{
-    background: #0d4a52 !important;
+    /*background: #0d4a52 !important;*/
 }
 
 .rotate{
