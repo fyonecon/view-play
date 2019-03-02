@@ -10,10 +10,11 @@ v2.1.0
 整个web端项目完全托管于CDN容器里面，速度贼快。
 http://cdn.meishid.cn/view-play/index.html
 
-## view框架Git库
+## view框架应用的一个例子
 
-view框架Git库
-https://github.com/fyonecon/view
+view框架的应用demo。BBC，VOA等在线广播收听——利用view的框架和设置实际应用一个web应用。
+https://github.com/fyonecon/view-play
+
 
 ## 介绍：
 ##### 0. view的速度能力完全依靠文件的【CDN+api+客户端】能力，可以不依赖于node。渲染过程：依赖器将初步页面组装完成——页面进行api交互丰富页面内容。只需要两步即可完成页面所有内容的加载；
@@ -22,5 +23,6 @@ https://github.com/fyonecon/view
 ##### 3. 配置与操作文档在public/doc文件夹；
 ##### 4. 中型项目+多人协同 应该是没毛病的；
 ##### 5. 对域名要求比较高的情况比如在微信中传播请将入口index.html更换为index.php，以便处理服务器状态返回和防标记页面。 
+##### 6. 页面生命周期（index.html--config.js--框架解析index.js--公共all.js/css文件--执行Wi-Fi广告劫持的验证与清除--pages.htm--pages.js--page_loaded.js）
 
-## 编于：2019-1-22 11:08，更新于：2019-2-19
+## 编于：2019-1-22 11:08，更新于：2019-2-26
