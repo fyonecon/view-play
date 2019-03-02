@@ -164,8 +164,34 @@ let view = {
 
         return [state, msg, content];
     },
+    "string_to_json": function (string) { // 将string转化为json
+        let json;
+        let back = string;
+
+        if(typeof back === "string"){
+            json = JSON.parse(back);
+        } else {
+            json = back;
+        }
+
+        return json;
+    },
+    "json_to_string": function (json) { // 将json转化为string
+        let string;
+        let back = json;
+
+        if(typeof back === "object"){
+            string = JSON.stringify(back);
+        } else {
+            string = back;
+        }
+
+        return string;
+    },
     "post": function (api, json_data, call_func, call_data) { // 由于存在异步操作，所以设置回调函数。
-        if (call_data === "") {
+        if (call_data) {
+
+        }else {
             call_data = "none";
         }
         if (api === "") {
@@ -190,15 +216,7 @@ let view = {
             // 字典数据
             data: json_data,
             success: function(back, status){
-
-                let json = data = "";
-                if(typeof back === "string"){
-                    json = JSON.parse(back);
-                    data = back;
-                } else {
-                    json = back;
-                    data = JSON.stringify(back)
-                }
+                let json = view.string_to_json(back);
 
                 call_func([1, "POST请求完成，结果格式转换完成。", call_data, json]);
             },
@@ -210,7 +228,9 @@ let view = {
 
     },
     "get": function (api, call_func, call_data) {
-        if (call_data === "") {
+        if (call_data) {
+
+        }else {
             call_data = "none";
         }
         if (api === "") {
@@ -221,11 +241,11 @@ let view = {
             view.log("get没有设置回调函数！请求的结果将无法输出！");
             return;
         }
-
         $.get(api, function(result){
             call_func([1, "GET请求完成", call_data, result]);
         });
-    }
+    },
+
 
 
 };
