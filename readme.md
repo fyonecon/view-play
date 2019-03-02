@@ -10,10 +10,10 @@ v2.1.0
 整个web端项目完全托管于CDN容器里面，速度贼快。
 http://cdn.meishid.cn/view-play/index.html
 
-## view框架应用的一个例子
+## view框架
 
-view框架的应用demo。BBC，VOA等在线广播收听——利用view的框架和设置实际应用一个web应用。
-https://github.com/fyonecon/view-play
+view框架git库
+https://github.com/fyonecon/view
 
 
 ## 介绍：
