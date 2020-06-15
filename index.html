@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>loading...</title>
-    <link rel="icon" href="public/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./public/img/favicon.ico" type="image/x-icon">
     <meta name="robots" content="noindex, nofollow"/>
-    <meta name="keywords" content=""/>
-    <meta name="description" content="单页应用-模块化、组件化框架-view。强烈建议部署在CDN容器里。Github：https://github.com/fyonecon/view"/>
-
-    <script id="depend-js">
-        let time_start  = Math.floor((new Date()).getTime());  // ms。开始载入外部文件的时间戳
-        let time_loaded = 0;  // ms。框架载入完成的时间戳
-        let time_error  = 0;  // ms。框架出错的时间戳
-        (function () { // 同步载入核心依赖js，完成框架解析
-            var file_url = ""; // 自定义
-            var depend_file = "//cdnaliyun.oss-cn-hangzhou.aliyuncs.com/view/"; // 自定义
+    <meta name="keywords" content="模块化|组件化|快速|防审|可移植|view|MVD模式框架"/>
+    <meta name="description" content="单页应用，模块化、组件化的MVD框架———view。依靠轮子插件、公共功能、纯js渲染数据、项目移植与管理等需求，编写的快速、防审、可移植轮子web框架。强烈建议部署在CDN类似容器里。Github：https://github.com/fyonecon/view"/>
+    <script id="depend-js" title="init-this-framework">
+        var time_start  =  Math.floor((new Date()).getTime());  // ms。开始载入外部文件的时间戳
+        var time_loaded = 0;  // ms。框架载入完成的时间戳
+        var time_error  = 0;  // ms。框架出错的时间戳
+        (function () {
+            var file_url = "./"; // 自定义，CDN主网址
+            var depend_file = "./"; // 自定义，CDN主网址
             var js_src_array = [ // 不可更改
                 file_url + "config/config.js",
                 depend_file + "depend/view.js",
@@ -47,19 +46,15 @@
                     };
                 };
             };
-
         })();
     </script>
-
 </head>
 <body class="body">
-<!--start-->
-<!--inject content-->
-<div class="depend" id="depend"></div>
-<!--loading show-->
-<div class="loading-div" id="loading-div"></div>
-<!--end-->
-<!--like wifi ad-->
-<div class="wifi-ad" id="wifi-ad"></div>
+    <!-- inject-content -->
+    <div class="depend" id="depend"><!-- inject-div --></div>
+    <!-- show loading-icon -->
+    <div class="loading-div" id="loading-div"></div>
+    <!-- del-wifi-ad -->
+    <div class="wifi-ad hide" id="wifi-ad"></div>
 </body>
 </html>

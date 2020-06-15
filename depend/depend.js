@@ -30,12 +30,11 @@ const index_load = {
                 ["check", check],
             ]);
             map.get("check");
-            console.log("ES6 Supported.");
         });
-
     }catch (e) {
+        console.error(e);
         alert("该古老的浏览器不支持ES6语法。");
-        window.location.replace("help-es6.html");
+        window.location.replace("./help-es6.html");
     }
 })();
 
@@ -52,10 +51,11 @@ const index_load = {
     };
 })();
 
+
 // 加载框架模块文件
 (function () {
 
-    let depend = {  // 依赖函数
+    const depend = {  // 依赖函数
         "get_url_param": function (url, key) {  // 获取url中的参数
             let url_str = "";
             if(!url){
@@ -75,13 +75,12 @@ const index_load = {
         "page_file": function (pages_index) {  // 添加页面js、css资源文件
 
             if (pages_index === null){
-                console.log("pages参数好像未定义，pages.js数组参数找不到,页面和框架数据将不能渲染");
+                console.error("pages.js数组参数找不到，页面和框架数据将不能渲染。");
 
                 setTimeout(function () {
-                    window.location.replace(route_default);
+                    window.location.replace(route_default); // 则进入默认页
                 }, 1000);
 
-                //window.location.replace(route_404);  // 则进入默认页
                 return;
             }
 
@@ -112,24 +111,27 @@ const index_load = {
 
         },
         "page_all_js_has": function () {  // 页面全部js加载完执行
-            view.log("View Framework is Running.");
             view.log("Files Cache_time = "+cache_time +"s");
             document.getElementById("loading-div").classList.add("hide");
             time_loaded = Math.floor((new Date()).getTime());
             let view_loaded_time = time_loaded - time_start;
-            try {
 
+            try {
                 let head = document.head || document.getElementsByTagName("head")[0];
                 let script = document.createElement("script");
                 script.setAttribute("src", file_url + "config/page_loaded.js?"+page_time);
                 head.appendChild(script);
-
-                let page = depend.get_url_param("", "route");
-
-                start_this_page([view_loaded_time, "框架解析完成，用时"+view_loaded_time+"ms", "开始执行"+page+"页面数据>>"]);
-
             }catch (e) {
-                console.log("start_this_page()" + "页面起始模块函数未定义，但是此函数可忽略。");
+                console.error(e);
+                console.log("=error=page_loaded=");
+            }
+
+            try {
+                let page = depend.get_url_param("", "route");
+                start_this_page([view_loaded_time, "框架解析完成，用时"+view_loaded_time+"ms", "开始执行"+page+"页面数据>>"]);
+            }catch (e) {
+                console.log(e);
+                console.error("【可忽略】start_this_page()" + "页面起始模块函数未定义，但是此函数可忽略。");
             }
         },
 
@@ -137,7 +139,7 @@ const index_load = {
 
     // 校验文件引入参数是否已经存在，不存在就不需要解析框架
     if( typeof time_start === "undefined" || typeof file_url === "undefined" || typeof page_url === "undefined" || typeof page_time === "undefined" ){
-        console.log("参数未定义：%s，框架产生了异步时差，需要决解框架Bug。5s秒后将重试网页。", [time_start, file_url, page_url, page_time]);
+        console.error("参数未定义：%s，框架产生了异步时差，需要决解框架Bug。5s秒后将重试网页。", [time_start, file_url, page_url, page_time]);
         setTimeout(function () {
             window.location.reload();
         }, 5000);
@@ -174,7 +176,7 @@ const index_load = {
                             }
                             setTimeout(function () {
                                 if (pages_index === null){
-                                    console.log("页面没有正确路由#route=xxx，将进入默认页面。");
+                                    console.error("页面没有正确路由?route=xxx，将进入默认页面。");
                                     time_error = Math.floor((new Date()).getTime());
                                     setTimeout(function () {
                                         window.location.replace(route_default);  // 则进入默认页
@@ -191,14 +193,16 @@ const index_load = {
                                 async: true,
                                 success: function (data) {
                                     let div = document.createElement("div");
+                                    div.classList.add("inject-div");
+                                    div.classList.add("clear");
                                     div.innerHTML = data;
-                                    document.getElementById("depend").appendChild(div); // 将模块渲染入主文件
 
+                                    document.getElementById("depend").appendChild(div); // 将模块渲染入主文件
                                     resolve();
                                 },
                                 error: function (error) {
-                                    console.log("缺失模块html文件=" + error);
-                                    console.log("1.非同源政策限制模块文件的拉取；2.本应用需要服务器环境（网络环境）；3.htm组件文件404。");
+                                    console.error("缺失模块html文件=" + error);
+                                    console.error("1.非同源政策限制模块文件的拉取；2.本应用需要服务器环境（网络环境）；3.htm组件文件404。");
                                     time_error = Math.floor((new Date()).getTime());
                                     setTimeout(function () {
                                         window.location.replace("help-htm.html");

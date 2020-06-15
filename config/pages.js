@@ -1,4 +1,5 @@
 /*页面和模块信息配置*/
+/*路由注册（白名单）*/
 
 // 所有页面公用js、css文件，全局有效
 const page_public_file = {
@@ -47,6 +48,54 @@ const pages = [
             },
         ],
     },
+    { // 页面模块
+        "route"     : "ag",
+        "file_path" : "ag/ag.htm",
+        "title"     : "服务提醒Ag",
+        "file"      : [
+            {
+                "js": [
+                    "pages/ag/ag.js",
+                    "pages/tts/voice.js",
+                ],
+                "css": [
+                    "pages/ag/ag.css",
+                ],
+            },
+        ],
+    },
+    { // 页面模块
+        "route"     : "au",
+        "file_path" : "au/au.htm",
+        "title"     : "服务提醒Au",
+        "file"      : [
+            {
+                "js": [
+                    "pages/au/au.js",
+                    "pages/tts/voice.js",
+                ],
+                "css": [
+                    "pages/au/au.css",
+                ],
+            },
+        ],
+    },
+    { // 页面模块
+        "route"     : "tts",
+        "file_path" : "tts/tts.htm",
+        "title"     : "服务提醒tts",
+        "file"      : [
+            {
+                "js": [
+                    "pages/tts/tts.js",
+                    "pages/tts/voice.js",
+                ],
+                "css": [
+                    "pages/tts/tts.css",
+                ],
+            },
+        ],
+    },
     // 结束-其他页面模块
 
     // 开始-模块范本
@@ -89,10 +138,10 @@ const pages = [
         "file"      : [
             {
                 "js": [
-                    "pages/fm/fm.js?",
+                    "pages/fm/fm.js",
                 ],
                 "css": [
-                    "pages/fm/fm.css?",
+                    "pages/fm/fm.css",
                 ],
             },
         ],

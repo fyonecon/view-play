@@ -4,8 +4,11 @@
 const map_cache = new Map(); // 设置页面键-值对缓存
 let view = {
     "log": function (txt) { // 日志打印统一函数
-        if (txt === 0 || txt === "0") {}else {if (!txt){txt = "空txt";} }
-        debug === true ? console.log(txt): "";
+        if (txt === 0 || txt === "0") {}else {if (!txt){txt = "空txt，-log";} }
+        debug === true ? console.log(JSON.stringify(txt)): "";
+    },
+    "error": function (txt) { // 日志打印统一函数
+        console.error(JSON.stringify(txt));
     },
     "write_htm": function (file_path, by_id, call_func) {  // 注射文件 | 写入htm
         $.ajax({ // 利用ajax的get请求获取文本内容
@@ -43,7 +46,7 @@ let view = {
         for (let i=0; i<js_src_array.length; i++){
             let script = document.createElement("script");
             script.setAttribute("class", "write-js");
-            script.setAttribute("src", js_src_array[i]+ "?" + page_time);
+            script.setAttribute("src", js_src_array[i]);
             head.appendChild(script);
             script.onload = function () {
                 had_onload++;
@@ -266,6 +269,9 @@ let view = {
     "timestamp": function() {
         return new Date().getTime();
     },
+    "js_rand": function (min, max) { // [min, max]
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    },
     "set_data": function (key, value){
         localStorage.setItem(key,value);
         if (localStorage.getItem(key)){
@@ -302,8 +308,8 @@ let view = {
             return false;
         }
     },
-
-
+    "time": new Date(),
+    "time_ms": (new Date()).getTime(),
 
 };
 
